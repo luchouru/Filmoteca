@@ -213,9 +213,13 @@ public class AgregarPelicula extends javax.swing.JFrame {
         String genero = (String) cmbGenero.getSelectedItem();
         int calificacion = Integer.parseInt((String) cmbCalificacion.getSelectedItem());
         
-        control.agregarPelicula(nombre, anio, director, pais, genero, calificacion);
+        if(nombre.isBlank())
+            mostrarMensaje("El nombre esta en blanco", "Error", "Error");
+        else{
+            control.agregarPelicula(nombre, anio, director, pais, genero, calificacion);
+            mostrarMensaje("Pelicula agregada", "Info", "Exito");
+        }
         
-        mostrarMensaje("Pelicula agregada", "Info", "Exito");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     public void mostrarMensaje(String mensaje, String tipo, String titulo){

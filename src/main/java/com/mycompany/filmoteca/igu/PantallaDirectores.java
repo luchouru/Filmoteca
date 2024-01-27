@@ -32,6 +32,9 @@ public class PantallaDirectores extends javax.swing.JFrame {
         btnFilmografia = new javax.swing.JButton();
         btnRefrescar = new javax.swing.JButton();
         cmbPais = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -90,19 +93,26 @@ public class PantallaDirectores extends javax.swing.JFrame {
             }
         });
 
+        cmbPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPaisActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Nombre:");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmbPais, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,6 +123,25 @@ public class PantallaDirectores extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombre))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbPais, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,9 +151,14 @@ public class PantallaDirectores extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFiltrar)
                     .addComponent(cmbPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addGap(4, 4, 4)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnSalir)
@@ -182,6 +216,16 @@ public class PantallaDirectores extends javax.swing.JFrame {
         cargarTabla();
     }//GEN-LAST:event_btnRefrescarActionPerformed
 
+    private void cmbPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPaisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPaisActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String nombre = txtNombre.getText();
+        List<Director> directoresEncontrados = control.encontrarDirectores(nombre);
+        cargarTabla(directoresEncontrados);
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     public void mostrarMensaje(String mensaje, String tipo, String titulo){
         JOptionPane optionPane = new JOptionPane(mensaje);
         if(tipo.equals("Info")){
@@ -197,14 +241,17 @@ public class PantallaDirectores extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnFilmografia;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnRefrescar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cmbPais;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaDirectores;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
@@ -242,6 +289,29 @@ public class PantallaDirectores extends javax.swing.JFrame {
         modeloTabla.setColumnIdentifiers(titulos);
         
         List<Director> listaDirectores = control.traerDirectoresPais(pais);
+        if(listaDirectores != null){
+            for(Director actual : listaDirectores){
+                Object objeto[] = {actual.getNombre(), actual.getNacionalidad().getNombre(),
+                 actual.getId()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+        
+        tablaDirectores.setModel(modeloTabla);
+    }
+
+    private void cargarTabla(List<Director> directoresEncontrados) {
+        DefaultTableModel modeloTabla = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Nombre", "Pais", "Id"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Director> listaDirectores = directoresEncontrados;
         if(listaDirectores != null){
             for(Director actual : listaDirectores){
                 Object objeto[] = {actual.getNombre(), actual.getNacionalidad().getNombre(),

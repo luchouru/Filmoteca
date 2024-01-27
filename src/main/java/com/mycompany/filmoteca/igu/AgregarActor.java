@@ -2,6 +2,8 @@
 package com.mycompany.filmoteca.igu;
 
 import com.mycompany.filmoteca.logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 
 public class AgregarActor extends javax.swing.JFrame {
@@ -97,9 +99,27 @@ public class AgregarActor extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String nombre = txtNombre.getText();
         
-        control.agregarActor(nombre);
+        if(nombre.isBlank())
+            mostrarMensaje("El nombre esta en blanco", "Error", "Error");
+        else{
+            control.agregarActor(nombre);
+            mostrarMensaje("Actor agregado correctamente", "Info", "Exito");
+        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
-
+    
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("Error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;

@@ -4,6 +4,8 @@ package com.mycompany.filmoteca.igu;
 import com.mycompany.filmoteca.logica.Controladora;
 import com.mycompany.filmoteca.logica.Pais;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 
 public class AgregarDirector extends javax.swing.JFrame {
@@ -144,10 +146,27 @@ public class AgregarDirector extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         String pais = (String) cmbPais.getSelectedItem();
         
-        control.agregarDirector(nombre, pais);
+        if(nombre.isBlank())
+            mostrarMensaje("El nombre esta en blanco", "Error", "Error");
+        else{
+            control.agregarDirector(nombre, pais);
+            mostrarMensaje("Director agregado correctamente", "Info", "Exito");
+        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    
+        public void mostrarMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("Error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;

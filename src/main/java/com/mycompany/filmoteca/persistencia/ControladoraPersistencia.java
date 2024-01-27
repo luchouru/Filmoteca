@@ -101,6 +101,14 @@ public class ControladoraPersistencia {
         return directorController.findDirector(id);
     }
 
+    public List<Director> encontrarDirectores(String nombre) {
+        return directorController.findDirectores(nombre);
+    }
+
+    public List<Actor> encontrarActores(String nombre) {
+        return actorController.findActores(nombre);
+    }
+
 
     
 }

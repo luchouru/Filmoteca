@@ -176,6 +176,14 @@ public class Controladora {
         return listaPeliculas;
     }
 
+    public List<Director> encontrarDirectores(String nombre) {
+        return controlPersis.encontrarDirectores(nombre);
+    }
+
+    public List<Actor> encontrarActores(String nombre) {
+        return controlPersis.encontrarActores(nombre);
+    }
+
     
 
 

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
 
@@ -209,6 +210,20 @@ public class DirectorJpaController implements Serializable {
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
+        } finally {
+            em.close();
+        }
+    }
+
+    List<Director> findDirectores(String nombre) {
+        EntityManager em = getEntityManager();
+        try{
+            String jpql = "SELECT e FROM Director e WHERE e.nombre LIKE :nombre";
+            Query query = em.createQuery(jpql);
+            query.setParameter("nombre", "%" + nombre + "%");
+            return query.getResultList();
+        } catch (NoResultException e) {
+            return null;
         } finally {
             em.close();
         }
